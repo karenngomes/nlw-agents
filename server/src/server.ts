@@ -27,6 +27,4 @@ app.get("/health", async () => {
   return 'OK';
 });
 
-app.listen({ port: env.PORT }).then(() => {
-  console.log("Server is running on http://localhost:3333");
-});
+app.listen({ port: env.PORT });
