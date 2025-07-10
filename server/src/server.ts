@@ -7,11 +7,10 @@ import {
 } from "fastify-type-provider-zod";
 import { fastifyCors } from "@fastify/cors";
 import { env } from "./env.ts";
+import { getRoomsRoute } from "./http/routes/get-rooms.ts";
 
 if (!process.version.startsWith("v22.")) {
-  console.error(
-    `O app requer Node 22.x, mas você está com ${process.version}`
-  );
+  console.error(`O app requer Node 22.x, mas você está com ${process.version}`);
   process.exit(1);
 }
 
@@ -25,7 +24,9 @@ app.setSerializerCompiler(serializerCompiler);
 app.setValidatorCompiler(validatorCompiler);
 
 app.get("/health", async () => {
-  return 'OK';
+  return "OK";
 });
+
+app.register(getRoomsRoute);
 
 app.listen({ port: env.PORT });
