@@ -20,11 +20,13 @@ export function CreateRoom() {
     <div>
       {isLoading && <p>Loading rooms...</p>}
 
-      {data?.map((room) => (
-        <div key={room.id}>
-          <p>{room.name}</p>
-        </div>
-      ))}   
+      <div className="flex flex-col gap-1">
+        {data?.map((room) => (
+          <Link key={room.id} to={`/room/${room.id}`}>
+            {room.name}
+          </Link>
+        ))}
+      </div>
 
       <Link className="underline" to="/room">
         Go to Room Page
