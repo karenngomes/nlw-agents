@@ -9,6 +9,7 @@ import { fastifyCors } from "@fastify/cors";
 import { env } from "./env.ts";
 import { getRoomsRoute } from "./http/routes/get-rooms.ts";
 import { createRoomRoute } from "./http/routes/create-room.ts";
+import { getRoomQuestionsRoute } from "./http/routes/get-room-questions.ts";
 
 if (!process.version.startsWith("v22.")) {
   console.error(`O app requer Node 22.x, mas você está com ${process.version}`);
@@ -30,5 +31,6 @@ app.get("/health", async () => {
 
 app.register(getRoomsRoute);
 app.register(createRoomRoute);
+app.register(getRoomQuestionsRoute);
 
 app.listen({ port: env.PORT });
