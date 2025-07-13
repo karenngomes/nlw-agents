@@ -29,7 +29,7 @@ export function RoomList() {
 
         {data?.map((room) => (
           <Link
-            to={`/rooms/${room.id}`}
+            to={`/room/${room.id}`}
             key={room.id}
             className="flex items-center justify-between rounded-lg border p-3 hover:bg-accent/50"
           >
