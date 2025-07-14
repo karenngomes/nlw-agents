@@ -20,7 +20,6 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateQuestion } from "./http/use-create-question";
 
-// Esquema de validação no mesmo arquivo conforme solicitado
 const createQuestionSchema = z.object({
   question: z
     .string()
@@ -49,6 +48,8 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
     await createQuestion(data);
   }
 
+  const { isSubmitting } = form.formState;
+
   return (
     <Card>
       <CardHeader>
@@ -73,6 +74,7 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
                     <Textarea
                       className="min-h-[100px]"
                       placeholder="O que você gostaria de saber?"
+                      disabled={isSubmitting}
                       {...field}
                     />
                   </FormControl>
@@ -81,7 +83,9 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
               )}
             />
 
-            <Button type="submit">Enviar pergunta</Button>
+            <Button disabled={isSubmitting} type="submit">
+              Enviar pergunta
+            </Button>
           </form>
         </Form>
       </CardContent>
