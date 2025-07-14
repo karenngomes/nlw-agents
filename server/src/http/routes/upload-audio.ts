@@ -1,6 +1,9 @@
 import type { FastifyPluginCallbackZod } from "fastify-type-provider-zod";
 import { z } from "zod/v4";
 import { generateEmbeddings, transcribeAudio } from "../../services/gemini.ts";
+import { db } from "../../db/connection.ts";
+import { schema } from "../../db/schema/index.ts";
+import { th } from "zod/locales";
 
 export const uploadAudioRoute: FastifyPluginCallbackZod = (app) => {
   app.post(
@@ -35,10 +38,24 @@ export const uploadAudioRoute: FastifyPluginCallbackZod = (app) => {
 
       const embeddings = await generateEmbeddings(transcription);
 
-      return { transcription, embeddings };
-
-
       // 3. Salvar os vetores no banco de dados
+
+      const result = await db
+        .insert(schema.audioChunks)
+        .values({
+          roomId,
+          transcription,
+          embeddings,
+        })
+        .returning();
+
+      const chunk = result[0];
+
+      if (!chunk) {
+        throw new Error("Failed to save audio chunk.");
+      }
+
+      return reply.status(201).send({ chunkId: chunk.id });
     }
   );
 };
