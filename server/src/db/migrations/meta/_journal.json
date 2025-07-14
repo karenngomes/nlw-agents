@@ -15,6 +15,13 @@
       "when": 1752364115902,
       "tag": "0001_famous_talon",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1752524123317,
+      "tag": "0002_nosy_switch",
+      "breakpoints": true
     }
   ]
 }
