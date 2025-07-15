@@ -2,14 +2,10 @@
 
 > Backend of the NLW Agents application, built with Node.js, Fastify, and Drizzle ORM.
 
----
-
 ## About
 
 This is the server for the NLW Agents project.  
 Built with TypeScript and Node.js, it uses the Fastify framework to create a high-performance REST API and Drizzle ORM for PostgreSQL database management. It also integrates the Google Gemini API for AI features.
-
----
 
 ## Installation
 
@@ -25,8 +21,6 @@ Built with TypeScript and Node.js, it uses the Fastify framework to create a hig
    yarn install
    ```
 
----
-
 ## Configuration
 
 1. Copy the example environment file:
@@ -39,8 +33,6 @@ Built with TypeScript and Node.js, it uses the Fastify framework to create a hig
    DATABASE_URL=postgres://username:password@localhost:5432/nlw_agents
    GEMINI_API_KEY=your_gemini_api_key
    ```
-
----
 
 ## Usage
 
@@ -56,16 +48,17 @@ Built with TypeScript and Node.js, it uses the Fastify framework to create a hig
   # or
   yarn start
   ```
-
-### Database Commands
-
-```bash
-npm run db:generate   # Generate migrations
-npm run db:migrate    # Apply migrations
-npm run db:seed       # Seed the database
-```
-
----
+- **Database Commands**:
+  ```bash
+  npm run db:generate   # Generate migrations
+  npm run db:migrate    # Apply migrations
+  npm run db:seed       # Seed the database
+  ```
+- **Interactive Studio**:
+  ```bash
+  npx drizzle-kit studio
+  ```
+  Launches Drizzle Kit Studio, a visual interface for exploring and editing your database schema, running queries, and inspecting data.
 
 ## API Endpoints Examples
 
@@ -73,8 +66,6 @@ npm run db:seed       # Seed the database
 - `POST /rooms`  
 - `GET /rooms/:roomId`  
 - `POST /rooms/:roomId/audio`  
-
----
 
 ## Contribution
 
@@ -92,8 +83,6 @@ npm run db:seed       # Seed the database
    git push origin feature/your-feature-name
    ```
 5. Open a **Pull Request**.
-
----
 
 ## Contact
 
